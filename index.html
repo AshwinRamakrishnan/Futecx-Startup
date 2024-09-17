@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login, Register, and Forgot Password</title>
+    <link rel="stylesheet" href="index.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-image: url('Meeravathi.jpeg'); /* Path to your image */
+            background-size: cover; /* Ensure the image covers the whole screen */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+            background-position: center; /* Center the background image */
+        }
+        h2, label {
+            color: rgb(255, 255, 255); /* Change this color to the desired color */
+        }
+        .remember-forgot a, .register-link p, .register-link a {
+            color: rgb(231, 231, 255); /* Change this color to the desired color */
+            text-decoration: none; /* Optional: remove underline */
+        }
+        .remember-forgot a:hover, .register-link a:hover {
+            text-decoration: underline;
+        }
+        .input-container {
+            position: relative;
+            width: 100%;
+        }
+        .input-container input {
+            width: 100%;
+            padding-right: 40px; /* Space for the eye icon */
+        }
+        .input-container .eye-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        .form-section {
+            display: none;
+        }
+        .form-section.active {
+            display: block;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <script type="module">
+        // Import the necessary Firebase libraries
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+      
+        // Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyDUcPaGdOPQtsk9YqMeDWqvNKWFu7I-F_o",
+          authDomain: "test-420914.firebaseapp.com",
+          databaseURL: "https://test-420914-default-rtdb.firebaseio.com",
+          projectId: "test-420914",
+          storageBucket: "test-420914.appspot.com",
+          messagingSenderId: "551223275238",
+          appId: "1:551223275238:web:3d883e1e3ca2473d02d527",
+          measurementId: "G-S25F8L72DH"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+      
+        // Login function
+        const loginForm = document.getElementById("login-form");
+        loginForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const email = document.getElementById("username").value;
+          const password = document.getElementById("password").value;
+      
+          signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              const user = userCredential.user;
+              alert("Login successful!");
+              // Redirect to home.html after successful login
+              window.location.href = 'home.html';
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              alert("Login failed: " + errorMessage);
+            });
+        });
+      
+        // Register function
+        const registerForm = document.getElementById("register-form");
+        registerForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("reg-password").value;
+      
+          createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              const user = userCredential.user;
+              alert("Registration successful!");
+              // Redirect to home.html after successful registration
+              window.location.href = 'home.html';
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              alert("Registration failed: " + errorMessage);
+            });
+        });
+      
+        // Forgot password function
+        const forgotPasswordForm = document.getElementById("forgot-password-form");
+        forgotPasswordForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const email = document.getElementById("reset-email").value;
+      
+          sendPasswordResetEmail(auth, email)
+            .then(() => {
+              alert("Password reset email sent!");
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              alert("Failed to send password reset email: " + errorMessage);
+            });
+        });
+      
+        // Toggle between forms
+        function toggleForms(formId) {
+          const forms = document.querySelectorAll(".form-section");
+          forms.forEach((form) => form.classList.remove("active"));
+          document.getElementById(formId).classList.add("active");
+        }
+
+        // Toggle password visibility
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const eyeIcon = document.getElementById('eye-icon');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        }
+    </script>
+
+    <div class="wrapper">
+        <main>
+            <article data-glow>
+                <div class="form-container">
+                    <!-- Login Form -->
+                    <div id="login-form" class="form-section active">
+                        <h2>Login</h2>
+                        <form onsubmit="login(event)">
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <div class="input-container">
+                                    <input type="email" id="username" name="username" required>
+                                    <i class="fas fa-user icon"></i>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <div class="input-container">
+                                    <input type="password" id="password" name="password" required>
+                                    <i class="fas fa-eye eye-icon" id="eye-icon" onclick="togglePasswordVisibility()"></i>
+                                </div>
+                            </div>
+                            <div class="remember-forgot">
+                                <label><input type="checkbox"> Remember me</label>
+                                <a href="#" onclick="toggleForms('forgot-password-form')">Forgot password?</a>
+                            </div>
+                            <div class="button-container">
+                                <button class="button" data-glow>Login</button>
+                            </div>
+                            <div class="register-link">
+                                <p>Don't have an account? <a href="#" onclick="toggleForms('register-form')">Register</a></p>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Register Form -->
+                    <div id="register-form" class="form-section">
+                        <h2>Register</h2>
+                        <form onsubmit="register(event)">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <div class="input-container">
+                                    <input type="text" id="name" name="name" required>
+                                    <i class="fas fa-user icon"></i>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <div class="input-container">
+                                    <input type="email" id="email" name="email" required>
+                                    <i class="fas fa-envelope icon"></i>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="reg-password">Password</label>
+                                <div class="input-container">
+                                    <input type="password" id="reg-password" name="password" required>
+                                    <i class="fas fa-eye eye-icon" id="reg-eye-icon" onclick="togglePasswordVisibilityRegister()"></i>
+                                </div>
+                            </div>
+                            <div class="button-container">
+                                <button class="button" data-glow>Register</button>
+                            </div>
+                            <div class="register-link">
+                                <p>Already have an account? <a href="#" onclick="toggleForms('login-form')">Login</a></p>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Forgot Password Form -->
+                    <div id="forgot-password-form" class="form-section">
+                        <h2>Reset Password</h2>
+                        <form onsubmit="forgotPassword(event)">
+                            <div class="form-group">
+                                <label for="reset-email">Enter your email</label>
+                                <div class="input-container">
+                                    <input type="email" id="reset-email" name="reset-email" required>
+                                    <i class="fas fa-envelope icon"></i>
+                                </div>
+                            </div>
+                            <div class="button-container">
+                                <button class="button" data-glow>Send Reset Link</button>
+                            </div>
+                            <div class="register-link">
+                                <p>Remembered your password? <a href="#" onclick="toggleForms('login-form')">Login</a></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </article>
+        </main>
+    </div>
+
+
+
+<script>
+    function toggleForms(formId) {
+        document.querySelectorAll('.form-section').forEach(form => form.classList.remove('active'));
+        document.getElementById(formId).classList.add('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const syncPointer = ({ x: pointerX, y: pointerY }) => {
+            const x = pointerX.toFixed(2);
+            const y = pointerY.toFixed(2);
+            const xp = (pointerX / window.innerWidth).toFixed(2);
+            const yp = (pointerY / window.innerHeight).toFixed(2);
+            document.documentElement.style.setProperty('--x', x);
+            document.documentElement.style.setProperty('--xp', xp);
+            document.documentElement.style.setProperty('--y', y);
+            document.documentElement.style.setProperty('--yp', yp);
+        };
+
+        document.body.addEventListener('pointermove', syncPointer);
+    });
+</script>
+</body>
+</html>

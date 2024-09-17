@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"> <!-- AOS CSS -->
+
+    <style>
+        /* Your existing styles here */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+        /* Body styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Navbar styling */
+        .navbar {
+            background: transparent;
+            border: none;
+        }
+        
+        .navbar-brand img {
+            width: 50px;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 10px 20px;
+        }
+        
+        .nav-item {
+            margin: 0 15px;
+        }
+        
+        .btn-blur {
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            color: #007bff;
+            border-radius: 5px;
+            padding: 10px 20px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        
+        .btn-blur:hover {
+            background: rgba(255, 255, 255, 1);
+            color: #0056b3;
+        }
+        
+        .nav-link {
+            color: #333 !important;
+        }
+        
+        /* Header Section with Background Image */
+        header {
+            position: relative;
+            height: 60vh; /* Adjusted height for visibility */
+            background-image: url('b.jpeg'); /* Add your image path */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        
+     /* Header Styling */
+header {
+    background-color: #333; /* Dark background for contrast (adjust as needed) */
+    padding: 40px 20px; /* Padding around the header content */
+}
+
+.header-content {
+    text-align: center; /* Center-align text within the header */
+}
+
+.header-content h1 {
+    color: #FFFFFF; /* White color for the heading */
+    font-family: "Font Awesome 5 Free";/* or any font of your choice */
+    font-size: 2.5rem; /* Adjust size as needed */
+    font-weight: bold; /* Bold text for emphasis */
+    margin-bottom: 10px; /* Space below the heading */
+}
+
+.header-content p {
+    color: #FFFFFF; /* White color for the paragraph */
+    font-family: "Font Awesome 5 Free"; /* or any font of your choice */
+    font-size: 1.125rem; /* Slightly larger size for readability */
+    margin: 0; /* Remove default margin */
+}
+
+  /* About Section Styling */
+.about-section {
+    background-color: #F5F5F5; /* Light Gray background */
+    padding: 40px 20px; /* Padding around the content */
+}
+
+.container {
+    max-width: 1200px; /* Limit container width */
+    margin: 0 auto; /* Center container */
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap; /* Ensure responsiveness */
+    align-items: center;
+    gap: 20px; /* Space between text and image */
+}
+h2 {
+    color: #2979FF; /* Electric Blue color */
+    font-family: "Font Awesome 5 Free"; /* or any font of your choice */
+    margin-bottom: 20px; /* Space below heading */
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: '➔'; /* Arrow mark after heading */
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #2979FF; /* Matching Electric Blue color */
+    font-size: 1.2rem; /* Adjust size as needed */
+}
+
+.text-content {
+    flex: 1; /* Allow text to take available space */
+}
+/* Paragraph Styling */
+p {
+    color: #4E4E4E; /* Charcoal Gray text color */
+    font-family: 'Arial', sans-serif; /* or any font of your choice */
+    line-height: 1.6; /* Improved readability */
+    margin-bottom: 20px; /* Space between paragraphs */
+    font-size: 1rem; /* Base font size (16px) */
+    font-weight: 400; /* Normal weight (400) */
+}
+
+/* Optional: Larger Font Size for More Emphasis */
+p.large-text {
+    font-size: 1.2rem; /* Larger font size (19px) */
+}
+
+/* Optional: Bold Font Weight for Emphasis */
+p.bold-text {
+    font-weight: 700; /* Bold weight (700) */
+}
+
+
+.image-content {
+    flex: 1; /* Allow image to take available space */
+    display: flex;
+    justify-content: center; /* Center image horizontally */
+}
+
+.image-content img {
+    max-width: 100%; /* Ensure the image is responsive */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Optional: Rounded corners for the image */
+}
+
+/* Optional: Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column; /* Stack text and image vertically on mobile */
+        align-items: flex-start; /* Align items to the start */
+    }
+}
+
+
+        
+        /* Service cards */
+        .service-cards {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            width: 240px;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            background-color: #f0f0f0; /* Light grey background on hover */
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-content i {
+            color: #333;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .card:hover .card-content i {
+            color: #007bff; /* Change icon color on hover */
+        }
+        
+        .card-content h3 {
+            margin: 0 0 10px;
+            font-size: 1.5rem;
+            font-weight: 600; /* Semi-bold font */
+            color: #333;
+            font-family: 'Poppins', sans-serif; /* Ensure the font style is applied */
+        }
+        
+        .card-content p {
+            margin: 0;
+            color: #777;
+            font-family: 'Poppins', sans-serif; /* Ensure the font style is applied */
+        }
+        .footer h4 {
+            color: rgb(255, 255, 255); /* White color for the h4 elements */
+            font-size: 18px; /* Adjust the size as needed */
+        }
+        
+        .footer p {
+            color: rgb(255, 255, 255); /* White color for the p elements */
+            font-size: 14px; /* Adjust the size as needed */
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+        }
+
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light" data-aos="fade-down" data-aos-duration="1000">
+    <a class="navbar-brand" href="#">
+        <img src="lo.jpeg" alt="your logo" style="width: 150px; height: auto;">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="nav-links mx-auto">
+            <ul class="navbar-nav">
+                <!-- Navbar items here -->
+                <li class="nav-item active">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="service.html">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="team.html">Team</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <button class="btn btn-blur" onclick="window.location.href='index.html'">Login</button>
+        </div>
+    </div>
+</nav>
+
+<header data-aos="fade-up" data-aos-duration="1500">
+    <div class="header-content">
+        <h1>About Us</h1>
+        <p>Learn more about our journey and mission</p>
+    </div>
+</header>
+
+<section class="about-section" data-aos="fade-left" data-aos-duration="1500">
+    <div class="container">
+        <div class="about-content">
+            <div class="text-content">
+                <!-- About content here -->
+                <h2>About FUTECX</h2>
+                <p>Welcome to FUTECX! We are dedicated to shaping the future of technology with innovative solutions and cutting-edge research. Our focus is on harnessing the power of AI, ML, NLP, and more to create transformative technologies that will redefine the digital landscape of tomorrow. 🚀</p>
+                
+                <h2>Our Mission</h2>
+                <p>At FUTECX, our mission is to advance technological capabilities through pioneering research and development. We aim to build technologies that not only address current challenges but also anticipate future needs. Our commitment is to foster a collaborative environment that promotes creativity, learning, and growth. 🌟</p>
+                
+                <h2>Our Vision</h2>
+                <p>To be at the forefront of technological innovation, driving progress and creating solutions that have a meaningful impact on society. We envision a future where our technologies empower individuals and organizations to achieve their full potential. 🌍</p>
+            </div>
+            <div class="image-content">
+                <img src="cat-2.jpg" alt="About FUTECX" />
+            </div>
+        </div>
+    </div>
+</section>
+
+<main class="container mt-4" data-aos="fade-up" data-aos-duration="1500">
+    <div class="service-cards">
+        <!-- Service cards here -->
+        <div class="card">
+            <div class="card-content">
+                <i class="fas fa-tools fa-3x"></i>
+                <h3>Build Projects</h3>
+                <p>Identify local partners to work with and lead project building activities.</p>
+            </div>
+        </div>
+        <!-- Community Learning Card -->
+        <div class="card">
+            <div class="card-content">
+                <i class="fas fa-users fa-3x"></i>
+                <h3>Community Learning</h3>
+                <p>Receive dedicated support to educate and expand your community online and in-person.</p>
+            </div>
+        </div>
+        <!-- Network Growth Card -->
+        <div class="card">
+            <div class="card-content">
+                <i class="fas fa-network-wired fa-3x"></i>
+                <h3>Network Growth</h3>
+                <p>Access to a global network of student leaders, professional community organizers, industry experts, and Google.</p>
+            </div>
+        </div>
+        <!-- Professional Growth Card -->
+        <div class="card">
+            <div class="card-content">
+                <i class="fas fa-briefcase fa-3x"></i>
+                <h3>Professional Growth</h3>
+                <p>Access to community management training and technical knowledge. Invitations to selected Google events.</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-aos="fade-up" data-aos-duration="1500">
+    <!-- Footer content here -->
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-white mb-3">Quick Links</h4>
+                <a class="btn btn-link" href="#">About FUTECX</a>
+                <a class="btn btn-link" href="contact.html">Contact Us</a>
+                <a class="btn btn-link" href="#">Privacy Policy</a>
+                <a class="btn btn-link" href="#">Terms & Conditions</a>
+                <a class="btn btn-link" href="#">FAQs & Help</a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-white mb-3">Contact</h4>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>143 Future Tech Park, Thanjavur, India</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 9876543210</p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>younginnovator2024@gmail.com</p>
+                <div class="d-flex pt-2">
+                    <a class="btn btn-outline-light btn-social" href="https://x.com/RAshwin2k?t=iTYdkOAasJn998jp7lrktw&s=09"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social" href="https://g.dev/AshwinRamakrishnan"><i class="fab fa-google"></i></a>
+                    <a class="btn btn-outline-light btn-social" href="https://github.com/AshwinRamakrishnan"><i class="fab fa-github"></i></a>
+                    <a class="btn btn-outline-light btn-social" href="https://www.linkedin.com/in/ashwin-ramakrishnan-b328a6298?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-white mb-3">Gallery</h4>
+                <div class="row g-2 pt-2">
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="AII.jpeg" alt="Project 1">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="ml.jpeg" alt="Project 2">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="ai.jpeg" alt="Project 3">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="Meeravathi.jpeg" alt="Project 4">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="king.jpeg" alt="Project 5">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid bg-light p-1" src="nlp.jpeg" alt="Project 6">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-white mb-3">Newsletter</h4>
+                <p>Stay updated with the latest from FUTECX. Subscribe to our newsletter.</p>
+                <div class="position-relative mx-auto" style="max-width: 400px;">
+                    <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="email" placeholder="Your email">
+                    <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="copyright">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="border-bottom" href="#">FUTECX</a>, All Rights Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="footer-menu">
+                        <a href="#">Home</a>
+                        <a href="#">Cookies</a>
+                        <a href="#">Help</a>
+                        <a href="#">FAQs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="#" class="btn btn-primary back-to-top"><i class="fa fa-chevron-up"></i></a>
+    
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script> <!-- AOS JS -->
+<script>
+    AOS.init();
+</script>
+<script src="app.js"></script>
+<script type="module" src="main.js"></script>
+</body>
+</html>
